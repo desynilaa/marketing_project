@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MonitoringController;
+use App\Http\Controllers\UserController;
+// use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +17,23 @@ use App\Http\Controllers\MonitoringController;
 */
 
 Route::get('/', function () {
-    return view('layouts.master');
+    return view('auth.login');
 });
-Route::get('/testing', function () {
-    return view('testing');
-});
-Route::get('/home', function () {
-    return view('welcome');
-});
+// Route::get('/testing', function () {
+//     return view('testing');
+// });
 
 Route::get('/monitoring/input', [MonitoringController::class, 'create']);
 Route::post('/monitoring/store', [MonitoringController::class, 'store']);
 Route::get('/monitoring/index', [MonitoringController::class, 'index']);
+
+Route::get('/pengguna/input', [UserController::class, 'create']);
+Route::post('/pengguna/store', [UserController::class, 'store']);
+Route::get('/pengguna/index', [UserController::class, 'index']);
+
+Auth::routes();
+// Route::get('/login', [App\Http\Controllers\Auth\loginController::class, 'login']);
+// Route::post('/loginPost', [loginController::class, 'loginPost']);
+// Route::get('/login', [UserController::class, 'index']);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

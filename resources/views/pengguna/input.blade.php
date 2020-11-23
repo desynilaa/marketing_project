@@ -32,47 +32,76 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Memasukan Data Kunjungan</h1>
-                    @if(Session::get('success'))
-					    <div class="alert alert-success">
-					        {{ Session::get('success')}}
-					    </div>
-					@endif
-
-					@if(Session::get('fail'))
-					    <div class="alert alert-danger">
-					        {{ Session::get('fail')}}
-					    </div>
-					@endif
+                    <h1 class="h3 mb-2 text-gray-800">Memasukan Pengguna Baru</h1>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Form Input Data Baru</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Form Input Pengguna Baru</h6>
                         </div>
                         <div class="card-body">
                             <form action="store" method="post" >
 						    @csrf
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control " name="username" placeholder="Masukkan username Anda" value="{{ Auth::user()->email }}" readonly>
-                                        <!-- <span style="color: red">@error('username'){{ $message }} @enderror</span> -->
+                                        <input type="text" class="form-control " name="email" placeholder="Masukkan email Anda" value="{{old('email')}}">
+                                        <span style="color: red">@error('email'){{ $message }} @enderror</span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="datetime-local" class="form-control " name="waktu_kunjungan" placeholder="Masukkan waktu kunjunngan Anda" value="{{old('waktu_kunjungan')}}">
-                                        <span style="color: red">@error('waktu_kunjungan'){{ $message }} @enderror</span>
+                                        <input type="password" class="form-control " name="password" placeholder="Masukkan password Anda" value="{{old('password')}}">
+                                        <span style="color: red">@error('password'){{ $message }} @enderror</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control "
-                                            name="tujuan_kunjungan" placeholder="Masukkan tujuan_kunjungan Anda" value="{{old('tujuan_kunjungan')}}">
-            							<span style="color: red">@error('tujuan_kunjungan'){{ $message }} @enderror</span>
+                                            name="nama" placeholder="Masukkan nama Anda" value="{{old('nama')}}">
+            							<span style="color: red">@error('nama'){{ $message }} @enderror</span>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control "
-                                            name="keterangan" placeholder="Masukkan keterangan Anda" value="{{old('keterangan')}}">
-            							<span style="color: red">@error('keterangan'){{ $message }} @enderror</span>
+                                            name="no_telf" placeholder="Masukkan no telepon Anda" value="{{old('no_telf')}}">
+            							<span style="color: red">@error('no_telf'){{ $message }} @enderror</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control "
+                                            name="loker" placeholder="Masukkan lokasi kerja Anda" value="{{old('loker')}}">
+                                        <span style="color: red">@error('loker'){{ $message }} @enderror</span>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <select name="FM" class="form-control">
+                                            <option value="BM TLT" selected>BM TLT</option>
+                                            <option value="FM Bali">FM Bali</option>
+                                            <option value="FM Nusra Timur">FM Nusra Timur</option>
+                                            <option value="FM Nusra Barat">FM Nusra Barat</option>
+                                            <option value="FM Jatim Timur">FM Jatim Timur</option>
+                                            <option value="FM Jatim Barat">FM Jatim Barat</option>
+                                            <option value="FM Surabaya Utara">FM Surabaya Utara</option>
+                                            <option value="FM Surabaya Barat">FM Surabaya Barat</option>
+                                        </select>
+                                        <!-- <input type="text" class="form-control" name="FM" placeholder="Masukkan FM Anda" value="{{old('FM')}}"> -->
+                                        <span style="color: red">@error('FM'){{ $message }} @enderror</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <select name="role" class="form-control">
+                                            <option value="administrator" selected>Administrator</option>
+                                            <option value="user">User</option>
+                                        </select>
+                                        <!-- <input type="text" class="form-control" name="role" placeholder="Masukkan role Anda" value="{{old('role')}}"> -->
+                                        <span style="color: red">@error('role'){{ $message }} @enderror</span>
                                     </div>
                                 </div>
                                 <div class="class=btn btn-primary btn-user" style="text-align: center" >

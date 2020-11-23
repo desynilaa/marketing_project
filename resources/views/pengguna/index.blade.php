@@ -11,6 +11,7 @@
 </head>
 
 <body id="page-top">
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -32,53 +33,60 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Memasukan Data Kunjungan</h1>
-                    @if(Session::get('success'))
-					    <div class="alert alert-success">
-					        {{ Session::get('success')}}
-					    </div>
-					@endif
-
-					@if(Session::get('fail'))
-					    <div class="alert alert-danger">
-					        {{ Session::get('fail')}}
-					    </div>
-					@endif
+<!--                     <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+                        For more information about DataTables, please visit the <a target="_blank"
+                            href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Form Input Data Baru</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Kunjungan</h6>
                         </div>
                         <div class="card-body">
-                            <form action="store" method="post" >
-						    @csrf
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control " name="username" placeholder="Masukkan username Anda" value="{{ Auth::user()->email }}" readonly>
-                                        <!-- <span style="color: red">@error('username'){{ $message }} @enderror</span> -->
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="datetime-local" class="form-control " name="waktu_kunjungan" placeholder="Masukkan waktu kunjunngan Anda" value="{{old('waktu_kunjungan')}}">
-                                        <span style="color: red">@error('waktu_kunjungan'){{ $message }} @enderror</span>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control "
-                                            name="tujuan_kunjungan" placeholder="Masukkan tujuan_kunjungan Anda" value="{{old('tujuan_kunjungan')}}">
-            							<span style="color: red">@error('tujuan_kunjungan'){{ $message }} @enderror</span>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control "
-                                            name="keterangan" placeholder="Masukkan keterangan Anda" value="{{old('keterangan')}}">
-            							<span style="color: red">@error('keterangan'){{ $message }} @enderror</span>
-                                    </div>
-                                </div>
-                                <div class="class=btn btn-primary btn-user" style="text-align: center" >
-        							<button class="btn btn-sm btn-primary" type="submit">Submit</button>
-    							</div>
-                            </form>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                        	<th>No.</th>
+                                            <th>email</th>
+                                            <th>nama</th>
+                                            <th>No Telepon</th>
+                                            <th>Lokasi Kerja</th>
+                                            <th>FM</th>
+                                            <th>Role</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                        	<th>No.</th>
+                                            <th>email</th>
+                                            <th>nama</th>
+                                            <th>No Telepon</th>
+                                            <th>Lokasi Kerja</th>
+                                            <th>FM</th>
+                                            <th>Role</th>
+                                            <th>Aksi</th>                   
+                                        </tr>
+                                    </tfoot>
+									<tbody>
+									    <?php $i = 1; ?>
+									        @foreach($users as $user)
+									        <tr>
+ 									            <td class="text-center">{{$loop->iteration}}</td>
+									            <td>{{$user->email}}</td>
+									            <td>{{$user->nama}}</td>
+									            <td>{{$user->no_telf}}</td>
+									            <td>{{$user->loker}}</td>
+									            <td>{{$user->FM}}</td>
+									            <td>{{$user->role}}</td>
+									            <td><button type="button" class="btn btn-danger">Hapus</button>&nbsp;&nbsp;<button type="button" class="btn btn-warning">Reset Password</button></td>
+									        </tr>
+									        @endforeach
+									</tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
