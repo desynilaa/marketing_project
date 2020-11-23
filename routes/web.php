@@ -27,9 +27,10 @@ Route::get('/monitoring/input', [MonitoringController::class, 'create'])->middle
 Route::post('/monitoring/store', [MonitoringController::class, 'store']);
 Route::get('/monitoring/index', [MonitoringController::class, 'index'])->middleware('auth');
 
-Route::get('/pengguna/input', [UserController::class, 'create'])->middleware('auth');;
+Route::get('/pengguna/input', [UserController::class, 'create'])->middleware('auth');
 Route::post('/pengguna/store', [UserController::class, 'store']);
-Route::get('/pengguna/index', [UserController::class, 'index'])->middleware('auth');;
+Route::get('/pengguna/index', [UserController::class, 'index'])->middleware('auth');
+Route::get('/pengguna/delete/{email}', [UserController::class, 'destroy']);
 
 Auth::routes();
 

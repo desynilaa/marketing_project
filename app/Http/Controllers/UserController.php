@@ -107,8 +107,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($email)
     {
-        //
+        DB::table('users') -> where('email', $email) -> delete();
+        // Alihkan ke halaman books
+        return redirect('/pengguna/index') -> with('status', 'Data has been successfully deleted');
     }
 }

@@ -25,20 +25,17 @@
             <!-- Main Content -->
             <div id="content">
 
-                <!-- Topbar -->
 @include('layouts.navbar')
-                <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-<!--                     <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p> -->
-
-                    <!-- DataTales Example -->
+                    @if (session('status'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('status') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Data Kunjungan</h6>
@@ -81,7 +78,9 @@
 									            <td>{{$user->loker}}</td>
 									            <td>{{$user->FM}}</td>
 									            <td>{{$user->role}}</td>
-									            <td><button type="button" class="btn btn-danger">Hapus</button>&nbsp;&nbsp;<button type="button" class="btn btn-warning">Reset Password</button></td>
+                                                <td><a href="/pengguna/delete/{{$user->email}}" class="btn btn-xs btn-danger" onclick="return confirm('yakin?');">Delete</a> | 
+                                                <button type="button" class="btn btn-warning">Reset Password</button></td>
+									            <!-- <td><button type="button" class="btn btn-danger">Hapus</button>&nbsp;&nbsp;<button type="button" class="btn btn-warning">Reset Password</button></td> -->
 									        </tr>
 									        @endforeach
 									</tbody>
@@ -89,20 +88,13 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!-- /.container-fluid -->
-
             </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
 @include('layouts.footer')
-            <!-- End of Footer -->
-
         </div>
-        <!-- End of Content Wrapper -->
-
     </div>
     <!-- End of Page Wrapper -->
 
@@ -131,6 +123,7 @@
         </div>
     </div>
 <link href="{{ asset('frontend/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('frontend/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
