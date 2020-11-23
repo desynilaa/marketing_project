@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class MonitoringController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,14 @@ class MonitoringController extends Controller
      */
     public function index()
     {
-        $monitorings= DB::table('monitorings')->get();
+        $email = Auth::user()->email;
+        $role =  DB::table('users')->where('email', $email)->value('role');
+        if ($role == 'administrator') {
+            $monitorings = DB::table('monitorings')->get();
+        }elseif ($role == 'user') {
+            $monitorings = DB::table('monitorings')->where('username', $email)->get();
+        }
+        // $monitorings= DB::table('monitorings')->get();
         return view('monitoring.index', ['monitorings' => $monitorings]);
         
     }

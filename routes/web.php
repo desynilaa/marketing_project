@@ -23,17 +23,14 @@ Route::get('/', function () {
 //     return view('testing');
 // });
 
-Route::get('/monitoring/input', [MonitoringController::class, 'create']);
+Route::get('/monitoring/input', [MonitoringController::class, 'create'])->middleware('auth');
 Route::post('/monitoring/store', [MonitoringController::class, 'store']);
-Route::get('/monitoring/index', [MonitoringController::class, 'index']);
+Route::get('/monitoring/index', [MonitoringController::class, 'index'])->middleware('auth');
 
-Route::get('/pengguna/input', [UserController::class, 'create']);
+Route::get('/pengguna/input', [UserController::class, 'create'])->middleware('auth');;
 Route::post('/pengguna/store', [UserController::class, 'store']);
-Route::get('/pengguna/index', [UserController::class, 'index']);
+Route::get('/pengguna/index', [UserController::class, 'index'])->middleware('auth');;
 
 Auth::routes();
-// Route::get('/login', [App\Http\Controllers\Auth\loginController::class, 'login']);
-// Route::post('/loginPost', [loginController::class, 'loginPost']);
-// Route::get('/login', [UserController::class, 'index']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

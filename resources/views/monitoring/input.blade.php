@@ -66,7 +66,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control "
-                                            name="tujuan_kunjungan" placeholder="Masukkan tujuan_kunjungan Anda" value="{{old('tujuan_kunjungan')}}">
+                                            name="tujuan_kunjungan" placeholder="Masukkan tujuan kunjungan Anda" value="{{old('tujuan_kunjungan')}}">
             							<span style="color: red">@error('tujuan_kunjungan'){{ $message }} @enderror</span>
                                     </div>
                                     <div class="col-sm-6">

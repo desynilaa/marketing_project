@@ -6,7 +6,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+<!--                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -17,7 +17,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -52,7 +52,8 @@
                         <li class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
                             <a id="navbarDropdown" class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->nama }}
+                                <h5>Hi {{ Auth::user()->nama }} !</h5>
+                                
                             </a> 
 
                         </li>
