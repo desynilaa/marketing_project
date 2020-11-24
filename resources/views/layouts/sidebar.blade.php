@@ -49,22 +49,14 @@
                         </div>
                     </div>
                 </li>
+            @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ URL::to('ganti-password')}}">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Ganti Password</span></a>
+                </li>
+
             @endif
-            
-<!--             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Kelola Pengguna</span>
-                </a>
-                <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Data</h6>
-                        <a class="collapse-item" href="{{ URL::to('pengguna/input')}}">Tambah Pengguna Baru</a>
-                        <a class="collapse-item" href="{{ URL::to('pengguna/index')}}">Lihat Pengguna</a>
-                    </div>
-                </div>
-            </li> -->
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"

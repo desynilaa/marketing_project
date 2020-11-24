@@ -26,12 +26,18 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             
             
-            // $table->string('email')->unique();
-            // $table->timestamp('email_verified_at')->nullable();
-            
-            // $table->rememberToken();
-            
         });
+        DB::table('users')->insert(
+        array(
+            'email' => 'admin@gmail.com',
+            'password' => '$2y$10$Yk1qMIPwCCa9t9fSXt6FNeE/4HXMAu3z.M2j1Yuwox.lZzbR/wRWG', 
+            'nama' => 'admin',
+            'no_telf' => '081234567897', 
+            'loker' => 'true', 
+            'FM' => 'sbs', 
+            'role' => 'administrator'
+        )
+    );
     }
 
     /**

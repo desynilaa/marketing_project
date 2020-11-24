@@ -32,50 +32,72 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-<!--                     <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p> -->
-
-                    <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Kunjungan</h6>
+                            <h4 class="m-0 font-weight-bold text-primary">Data Kunjungan</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>No.</th>
                                             <th>Username</th>
-                                            <th>Waktu Kunjungan</th>
-                                            <th>Tempat Kunjungan</th>
-                                            <th>Keterangan</th>
+                                            <th>Kategori Tenant</th>
+                                            <th>Agenda Visit</th>
+                                            <th>Perusahaan Tenant</th>
+                                            <th>Minat Produk</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th>No.</th>
                                             <th>Username</th>
-                                            <th>Waktu Kunjungan</th>
-                                            <th>Tempat Kunjungan</th>
-                                            <th>Keterangan</th>                   
+                                            <th>Kategori Tenant</th>
+                                            <th>Agenda Visit</th>
+                                            <th>Perusahaan Tenant</th>
+                                            <th>Minat Produk</th>
+                                            <th>Aksi</th>                   
                                         </tr>
                                     </tfoot>
 									<tbody>
 									    <?php $i = 1; ?>
 									        @foreach($monitorings as $monitoring)
 									        <tr>
-{{-- 									            <td class="text-center">{{$loop->iteration}}</td> --}}
+ 									            <td class="text-center">{{$loop->iteration}}</td>
 									            <td>{{$monitoring->username}}</td>
-									            <td>{{$monitoring->waktu_kunjungan}}</td>
-									            <td>{{$monitoring->tujuan_kunjungan}}</td>
-									            <td>{{$monitoring->keterangan}}</td>
+									            <td>{{$monitoring->kategori_tenant}}</td>
+									            <td>{{$monitoring->agenda_visit}}</td>
+									            <td>{{$monitoring->perusahaan_tenant}}</td>
+                                                <td>{{$monitoring->detail_minat_produk}}</td>
+                                                <td><a href="/detail/{{$monitoring->id}}" class="btn btn-info">Detail</a></td>
+                                                <!-- <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalLong">Detail</button></td> -->
+
 									        </tr>
 									        @endforeach
 									</tbody>
                                 </table>
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
                             </div>
                         </div>
                     </div>

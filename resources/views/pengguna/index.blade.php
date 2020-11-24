@@ -78,8 +78,10 @@
 									            <td>{{$user->loker}}</td>
 									            <td>{{$user->FM}}</td>
 									            <td>{{$user->role}}</td>
-                                                <td><a href="/pengguna/delete/{{$user->email}}" class="btn btn-xs btn-danger" onclick="return confirm('yakin?');">Delete</a> | 
-                                                <button type="button" class="btn btn-warning">Reset Password</button></td>
+                                                <td>
+                                                    <a href="/pengguna/delete/{{$user->email}}" class="btn btn-xs btn-danger" onclick="return confirm('Apakah Anda yakin?');">Delete</a> | 
+                                                    <a href="/pengguna/reset/{{$user->email}}" class="btn btn-warning" onclick="return confirm('Yakin ganti password?');">Reset Password</a>
+                                                </td>
 									            <!-- <td><button type="button" class="btn btn-danger">Hapus</button>&nbsp;&nbsp;<button type="button" class="btn btn-warning">Reset Password</button></td> -->
 									        </tr>
 									        @endforeach

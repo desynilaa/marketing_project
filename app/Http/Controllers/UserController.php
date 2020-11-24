@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use Auth;
 
 
 class UserController extends Controller
@@ -46,7 +47,6 @@ class UserController extends Controller
     {
         $request->validate([
             'email' => 'required|min:4|email|unique:users',
-            'password' => 'required',
             'nama' => 'required',
             'no_telf' => 'required',
             'loker' => 'required',
@@ -56,7 +56,7 @@ class UserController extends Controller
 
         $data = new User();
         $data->email = $request->email;
-        $data->password = bcrypt($request->password);
+        $data->password = bcrypt('000000');
         $data->nama = $request->nama;
         $data->no_telf = $request->no_telf;
         $data->loker = $request->loker;
@@ -112,5 +112,34 @@ class UserController extends Controller
         DB::table('users') -> where('email', $email) -> delete();
         // Alihkan ke halaman books
         return redirect('/pengguna/index') -> with('status', 'Data has been successfully deleted');
+    }
+
+    public function reset_password($email)
+    {
+        DB::table('users')
+            ->where('email', $email)
+            ->update(['password' => bcrypt('000000')]);
+
+        return redirect('/pengguna/index') -> with('status', 'Password has been successfully reset');
+    }
+
+    public function page_ganti_password()
+    {
+        return view('pengguna.ganti_pass');
+
+    }
+
+    public function ganti_password(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|min:6'
+        ]);
+
+        $email = Auth::user()->email;
+        DB::table('users')
+        ->where('email', $email)
+        ->update(['password' => bcrypt($request->password) ]);
+
+        return redirect('/pengguna/index') -> with('status', 'Password has been successfully changed');
     }
 }

@@ -48,7 +48,7 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Form Input Pengguna Baru</h6>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body"> 
                             <form action="store" method="post" >
 						    @csrf
                                 <div class="form-group row">
@@ -56,10 +56,10 @@
                                         <input type="text" class="form-control " name="email" placeholder="Masukkan email Anda" value="{{old('email')}}">
                                         <span style="color: red">@error('email'){{ $message }} @enderror</span>
                                     </div>
-                                    <div class="col-sm-6">
+<!--                                     <div class="col-sm-6">
                                         <input type="password" class="form-control " name="password" placeholder="Masukkan password Anda" value="{{old('password')}}">
                                         <span style="color: red">@error('password'){{ $message }} @enderror</span>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -100,7 +100,6 @@
                                             <option value="administrator" selected>Administrator</option>
                                             <option value="user">User</option>
                                         </select>
-                                        <!-- <input type="text" class="form-control" name="role" placeholder="Masukkan role Anda" value="{{old('role')}}"> -->
                                         <span style="color: red">@error('role'){{ $message }} @enderror</span>
                                     </div>
                                 </div>

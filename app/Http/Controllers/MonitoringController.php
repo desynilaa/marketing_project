@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Models\Monitoring;
 
 class MonitoringController extends Controller
 {
@@ -49,26 +50,53 @@ class MonitoringController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $request->validate([ 
             'username' => 'required',
-            'waktu_kunjungan' => 'required',
-            'tujuan_kunjungan' => 'required',
-            'keterangan' => 'required'
+            'kategori_tenant' => 'required',
+            'agenda_visit' => 'required',
+            'nama_tenant' => 'required',
+            'perusahaan_tenant' => 'required',
+            'alamat_tenant' => 'required',
+            'jabatan_tenant' => 'required',
+            'no_telp_tenant' => 'required|min:10',
+            'email_tenant' => 'required|min:9|email',
+            'jabatan_pemegang_kebijakan' => 'required',
+            'nama_pemegang_kebijakan' => 'required',
+            'minat_produk' => 'required',
+            'detail_minat_produk' => 'required',
+            'dokumentasi' => 'required',
+            'foto_dokumentasi' => 'required',
+            'cttn_peluang' => 'required',
+            'cttn_estimasi_revenue' => 'required',
+            'cttn_timeline' => 'required',
+            'cttn_permintaan_tenant' => 'required'
         ]);
 
-        $query = DB::table('monitorings')->insert([
-            'username' => $request->input('username'),
-            'waktu_kunjungan' => $request->input('waktu_kunjungan'),
-            'tujuan_kunjungan' => $request->input('tujuan_kunjungan'),
-            'keterangan' => $request->input('keterangan')
-        ]);
-        if($query){
-            return redirect('monitoring/index');
-        }else{
-            return back()->with('fail', 'Something went wrong!');
-        }
-        
-        // return $request->input();
+        $data = new Monitoring();
+        $data->username = $request->username;
+        $data->kategori_tenant = $request->kategori_tenant;
+        $data->agenda_visit = $request->agenda_visit;
+        $data->nama_tenant = $request->nama_tenant;
+        $data->perusahaan_tenant = $request->perusahaan_tenant;
+        $data->alamat_tenant = $request->alamat_tenant;
+        $data->jabatan_tenant = $request->jabatan_tenant;
+
+        $data->no_telp_tenant = $request->no_telp_tenant;
+        $data->email_tenant = $request->email_tenant;
+        $data->jabatan_pemegang_kebijakan = $request->jabatan_pemegang_kebijakan;
+        $data->nama_pemegang_kebijakan = $request->nama_pemegang_kebijakan;
+        $data->minat_produk = $request->minat_produk;
+        $data->detail_minat_produk = $request->detail_minat_produk;
+        $data->dokumentasi = $request->dokumentasi;
+        $data->foto_dokumentasi = $request->foto_dokumentasi;
+        $data->cttn_peluang = $request->cttn_peluang;
+
+        $data->cttn_estimasi_revenue = $request->cttn_estimasi_revenue;
+        $data->cttn_timeline = $request->cttn_timeline;
+        $data->cttn_permintaan_tenant = $request->cttn_permintaan_tenant;
+        $data->save();
+
+        return redirect('monitoring/index');
     }
 
     /**
@@ -79,7 +107,9 @@ class MonitoringController extends Controller
      */
     public function show($id)
     {
-        //
+        $monitorings= DB::table('monitorings')->where('id', $id)->first();
+        return view('monitoring.detail', compact('monitorings'));
+// return view('ecommerce.show', compact('product'));
     }
 
     /**
