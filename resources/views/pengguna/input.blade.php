@@ -32,7 +32,6 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Memasukan Pengguna Baru</h1>
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -42,8 +41,6 @@
                             </ul>
                         </div>
                     @endif
-
-                    <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Form Input Pengguna Baru</h6>
@@ -53,30 +50,19 @@
 						    @csrf
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control " name="email" placeholder="Masukkan email Anda" value="{{old('email')}}">
+                                        <input type="text" class="form-control " name="email" placeholder="Masukkan NIK (Nomor Induk Karyawan) calon pengguna" value="{{old('email')}}">
                                         <span style="color: red">@error('email'){{ $message }} @enderror</span>
                                     </div>
-<!--                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control " name="password" placeholder="Masukkan password Anda" value="{{old('password')}}">
-                                        <span style="color: red">@error('password'){{ $message }} @enderror</span>
-                                    </div> -->
-                                </div>
-                                <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control "
-                                            name="nama" placeholder="Masukkan nama Anda" value="{{old('nama')}}">
-            							<span style="color: red">@error('nama'){{ $message }} @enderror</span>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control "
-                                            name="no_telf" placeholder="Masukkan no telepon Anda" value="{{old('no_telf')}}">
-            							<span style="color: red">@error('no_telf'){{ $message }} @enderror</span>
+                                            name="nama" placeholder="Masukkan nama lengkap calon pengguna" value="{{old('nama')}}">
+                                        <span style="color: red">@error('nama'){{ $message }} @enderror</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control "
-                                            name="loker" placeholder="Masukkan lokasi kerja Anda" value="{{old('loker')}}">
+                                            name="loker" placeholder="Masukkan lokasi kerja calon pengguna" value="{{old('loker')}}">
                                         <span style="color: red">@error('loker'){{ $message }} @enderror</span>
                                     </div>
                                     <div class="col-sm-6">
@@ -90,11 +76,15 @@
                                             <option value="FM Surabaya Utara">FM Surabaya Utara</option>
                                             <option value="FM Surabaya Barat">FM Surabaya Barat</option>
                                         </select>
-                                        <!-- <input type="text" class="form-control" name="FM" placeholder="Masukkan FM Anda" value="{{old('FM')}}"> -->
                                         <span style="color: red">@error('FM'){{ $message }} @enderror</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control "
+                                            name="no_telf" placeholder="Masukkan no telepon calon pengguna" value="{{old('no_telf')}}">
+                                        <span style="color: red">@error('no_telf'){{ $message }} @enderror</span>
+                                    </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <select name="role" class="form-control">
                                             <option value="administrator" selected>Administrator</option>
@@ -103,9 +93,13 @@
                                         <span style="color: red">@error('role'){{ $message }} @enderror</span>
                                     </div>
                                 </div>
-                                <div class="class=btn btn-primary btn-user" style="text-align: center" >
+                                <div class="" style="text-align: right">
+                                    <button class="btn btn-primary btn-user" style="text-align: center" type="submit">Submit</button>
+                                </div>
+                                
+                                {{-- <div class="class=btn btn-primary btn-user" style="text-align: center" >
         							<button class="btn btn-sm btn-primary" type="submit">Submit</button>
-    							</div>
+    							</div> --}}
                             </form>
                         </div>
                     </div>

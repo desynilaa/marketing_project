@@ -46,9 +46,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email' => 'required|min:4|email|unique:users',
+            'email' => 'required|min:6|unique:users',
             'nama' => 'required',
-            'no_telf' => 'required',
+            'no_telf' => 'required|regex:/(0)[0-9]/|not_regex:/[a-z]/|min:9',
             'loker' => 'required',
             'FM' => 'required',
             'role' => 'required'

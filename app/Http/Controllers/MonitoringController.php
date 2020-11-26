@@ -107,8 +107,8 @@ class MonitoringController extends Controller
      */
     public function show($id)
     {
-        $monitorings= DB::table('monitorings')->where('id', $id)->first();
-        return view('monitoring.detail', compact('monitorings'));
+        // $monitorings= DB::table('monitorings')->where('id', $id)->first();
+        // return view('monitoring.detail', compact('monitorings'));
 // return view('ecommerce.show', compact('product'));
     }
 
@@ -143,6 +143,8 @@ class MonitoringController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('monitorings') -> where('id', $id) -> delete();
+        // Alihkan ke halaman books
+        return redirect('/monitoring/index') -> with('status', 'Data has been successfully deleted');
     }
 }

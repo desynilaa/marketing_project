@@ -26,6 +26,7 @@ Route::get('/', function () {
 Route::get('/monitoring/input', [MonitoringController::class, 'create'])->middleware('auth');
 Route::post('/monitoring/store', [MonitoringController::class, 'store']);
 Route::get('/monitoring/index', [MonitoringController::class, 'index'])->middleware('auth');
+Route::get('/monitoring/delete/{id}', [MonitoringController::class, 'destroy']);
 
 Route::get('/pengguna/input', [UserController::class, 'create'])->middleware('auth');
 Route::post('/pengguna/store', [UserController::class, 'store']);
@@ -36,7 +37,7 @@ Route::get('/pengguna/reset/{email}', [UserController::class, 'reset_password'])
 Route::get('/ganti-password', [UserController::class, 'page_ganti_password'])->middleware('auth');
 Route::post('/save-new-password', [UserController::class, 'ganti_password'])->middleware('auth');
 
-Route::get('/detail/{id}', [MonitoringController::class, 'show'])->middleware('auth');
+// Route::get('/detail/{id}', [MonitoringController::class, 'show'])->middleware('auth');
 
 
 
