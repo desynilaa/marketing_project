@@ -15,25 +15,25 @@ class CreateMonitoringsTable extends Migration
     {
         Schema::create('monitorings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('username');
-            $table->string('kategori_tenant');
-            $table->string('agenda_visit');
-            $table->string('nama_tenant');
-            $table->string('perusahaan_tenant');
+            $table->string('username', 50);
+            $table->string('kategori_tenant', 25);
+            $table->string('agenda_visit', 50);
+            $table->string('nama_tenant', 100);
+            $table->string('perusahaan_tenant', 60);
             $table->string('alamat_tenant');
-            $table->string('jabatan_tenant');
-            $table->string('no_telp_tenant');
-            $table->string('email_tenant');
-            $table->string('jabatan_pemegang_kebijakan');
+            $table->string('jabatan_tenant', 50);
+            $table->string('no_telp_tenant', 20);
+            $table->string('email_tenant', 60);
+            $table->string('jabatan_pemegang_kebijakan', 15);
             $table->string('nama_pemegang_kebijakan');
-            $table->string('minat_produk');
+            $table->string('minat_produk', 25);
             $table->string('detail_minat_produk');
-            $table->string('dokumentasi');
+            $table->string('dokumentasi', 30);
             $table->string('foto_dokumentasi');
-            $table->string('cttn_peluang');
-            $table->string('cttn_estimasi_revenue');
-            $table->string('cttn_timeline');
-            $table->string('cttn_permintaan_tenant');
+            $table->longtext('cttn_peluang');
+            $table->longtext('cttn_estimasi_revenue');
+            $table->longtext('cttn_timeline');
+            $table->longtext('cttn_permintaan_tenant');
             $table->timestamps();
         });
     }

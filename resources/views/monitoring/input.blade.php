@@ -48,17 +48,17 @@
                             <h4 class="m-0 font-weight-bold text-primary">Form Input Data Baru</h4>
                         </div>
                         <div class="card-body">
-                            <form action="store" method="post" >
+                            <form action="store" method="post" enctype="multipart/form-data" >
 						    @csrf
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control " name="username" placeholder="Masukkan username Anda" value="{{ Auth::user()->email }}" readonly>
+                                        <input type="text" class="form-control " name="username" placeholder="Masukkan username Anda" value="{{ Auth::user()->NIK }}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <select name="agenda_visit" class="form-control">
-                                            <option value="" disabled>Agenda Visit</option>
+                                            <option value="" disabled>Pilih Agenda Visit</option>
                                             <option value="INISIASI">INISIASI</option>
                                             <option value="PENJELASAN PRODUK">PENJELASAN PRODUK</option>
                                             <option value="VISIT PELUANG TENDER">VISIT PELUANG TENDER</option>
@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <select name="kategori_tenant" class="form-control">
-                                            <option value="" disabled>Kategori Tenant</option>
+                                            <option value="" disabled>Pilih Kategori Tenant</option>
                                             <option value="TELKOM">TELKOM</option>
                                             <option value="TELKOM GROUP">TELKOM GROUP</option>
                                             <option value="PERBANKAN">PERBANKAN</option>
@@ -89,7 +89,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <select name="minat_produk" id="minat_produk" onchange="update()" class="form-control">
-                                            <option disabled>Pilih minat produk</option>
+                                            <option disabled>Pilih Minat Produk</option>
                                             <option value="PROPERTY DEVELOPMENT">PROPERTY DEVELOPMENT</option>
                                             <option value="PROPERTY MANAGEMENT">PROPERTY MANAGEMENT</option>
                                             <option value="PROJECT MANAGEMENT">PROJECT MANAGEMENT</option>
@@ -99,7 +99,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <select name="detail_minat_produk" id="detail_minat_produk" class="form-control">
-                                            <option disabled>Pilih detail minat produk</option>
+                                            <option disabled>Pilih Jenis Minat Produk</option>
                                         </select>
                                         <span style="color: red">@error('FM'){{ $message }} @enderror</span>
                                     </div>
@@ -108,31 +108,31 @@
                                 <h6 class="mt-1 ml-1 font-weight-normal text-primary">&#9673; Calon Tenant</h6>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control " name="nama_tenant" placeholder="Masukkan nama tenant" value="{{old('nama_tenant')}}">
+                                        <input type="text" class="form-control " name="nama_tenant" placeholder="Tuliskan nama tenant" value="{{old('nama_tenant')}}">
                                         <span style="color: red">@error('nama_tenant'){{ $message }} @enderror</span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control " name="perusahaan_tenant" placeholder="Masukkan perusahaan tenant" value="{{old('perusahaan_tenant')}}">
+                                        <input type="text" class="form-control " name="perusahaan_tenant" placeholder="Tuliskan nama perusahaan tenant" value="{{old('perusahaan_tenant')}}">
                                         <span style="color: red">@error('perusahaan_tenant'){{ $message }} @enderror</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control " name="alamat_tenant" placeholder="Masukkan alamat tenant" value="{{old('alamat_tenant')}}">
+                                        <input type="text" class="form-control " name="alamat_tenant" placeholder="Tuliskan alamat tenant" value="{{old('alamat_tenant')}}">
                                         <span style="color: red">@error('alamat_tenant'){{ $message }} @enderror</span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control " name="jabatan_tenant" placeholder="Masukkan jabatan tenant" value="{{old('jabatan_tenant')}}">
+                                        <input type="text" class="form-control " name="jabatan_tenant" placeholder="Tuliskan jabatan tenant" value="{{old('jabatan_tenant')}}">
                                         <span style="color: red">@error('jabatan_tenant'){{ $message }} @enderror</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control " name="no_telp_tenant" placeholder="Masukkan no telepon tenant" value="{{old('no_telp_tenant')}}">
+                                        <input type="number" class="form-control " name="no_telp_tenant" placeholder="Tuliskan nomor telepon tenant" value="{{old('no_telp_tenant')}}">
                                         <span style="color: red">@error('no_telp_tenant'){{ $message }} @enderror</span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control " name="email_tenant" placeholder="Masukkan email tenant" value="{{old('email_tenant')}}">
+                                        <input type="text" class="form-control " name="email_tenant" placeholder="Tuliskan email tenant" value="{{old('email_tenant')}}">
                                         <span style="color: red">@error('email_tenant'){{ $message }} @enderror</span>
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <select name="jabatan_pemegang_kebijakan" class="form-control">
-                                            <option value="" disabled>Jabatan Pemegang Tenant</option>
+                                            <option value="" disabled>Pilih Jabatan Pemegang Tenant</option>
                                             <option value="DIREKTUR">DIREKTUR</option>
                                             <option value="PIMPINAN">PIMPINAN</option>
                                             <option value="GM">GM</option>
@@ -151,7 +151,7 @@
                                         <span style="color: red">@error('FM'){{ $message }} @enderror</span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control " name="nama_pemegang_kebijakan" placeholder="Masukkan nama pemegang kebijakan" value="{{old('nama_pemegang_kebijakan')}}">
+                                        <input type="text" class="form-control " name="nama_pemegang_kebijakan" placeholder="Tuliskan nama pemegang kebijakan" value="{{old('nama_pemegang_kebijakan')}}">
                                         <span style="color: red">@error('nama_pemegang_kebijakan'){{ $message }} @enderror</span>
                                     </div>
                                 </div>
@@ -159,36 +159,36 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <select name="dokumentasi" class="form-control">
-                                            <option value="" disabled>Dokumentasi / Foto</option>
+                                            <option value="" disabled>Dokumentasi / Foto (jpeg,png,jpg)</option>
                                             <option value="FOTO BERSAMA PIC">FOTO BERSAMA PIC</option>
-                                            <option value="FOTO KANTOR/ CALON TENANT">FOTO KANTOR/ CALON TENANT</option>
+                                            <option value="FOTO KANTOR / CALON TENANT">FOTO KANTOR/ CALON TENANT</option>
                                             <option value="FOTO EVIDENCE VIA MEDIA">FOTO EVIDENCE VIA MEDIA</option>
                                         </select>
                                         <span style="color: red">@error('FM'){{ $message }} @enderror</span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control " name="foto_dokumentasi" placeholder="Masukkan foto dokumentasi" value="{{old('foto_dokumentasi')}}">
+                                        <input type="file" class="form-control " name="foto_dokumentasi" placeholder="Upload foto" value="{{old('foto_dokumentasi')}}">
                                         <span style="color: red">@error('foto_dokumentasi'){{ $message }} @enderror</span>
                                     </div>
                                 </div>
                                 <h5 class="mb-1 mt-4 font-weight-bold text-primary">Catatan</h5>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control " name="cttn_peluang" placeholder="Isikan catatan peluang" value="{{old('cttn_peluang')}}">
+                                        <textarea type="text" class="form-control " name="cttn_peluang" placeholder="Isikan catatan tentang peluang" value="{{old('cttn_peluang')}}"></textarea>
                                         <span style="color: red">@error('cttn_peluang'){{ $message }} @enderror</span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control " name="cttn_estimasi_revenue" placeholder="Isikan catatan estimasi revenue" value="{{old('cttn_estimasi_revenue')}}">
+                                        <textarea type="text" class="form-control " name="cttn_estimasi_revenue" placeholder="Isikan catatan tentang estimasi revenue" value="{{old('cttn_estimasi_revenue')}}"></textarea>
                                         <span style="color: red">@error('cttn_estimasi_revenue'){{ $message }} @enderror</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control " name="cttn_timeline" placeholder="Isikan catatan timeline" value="{{old('cttn_timeline')}}">
+                                        <textarea type="text" class="form-control " name="cttn_timeline" placeholder="Isikan catatan tentang timeline" value="{{old('cttn_timeline')}}"></textarea>
                                         <span style="color: red">@error('cttn_timeline'){{ $message }} @enderror</span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control " name="cttn_permintaan_tenant" placeholder="Isikan catatan permintaan tenant" value="{{old('cttn_permintaan_tenant')}}">
+                                        <textarea type="text" class="form-control " name="cttn_permintaan_tenant" placeholder="Isikan catatan tentang permintaan tenant" value="{{old('cttn_permintaan_tenant')}}"></textarea>
                                         <span style="color: red">@error('cttn_permintaan_tenant'){{ $message }} @enderror</span>
                                     </div>
                                 </div>

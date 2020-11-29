@@ -47,22 +47,24 @@
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Username</th>
+                                            <th>Penginput</th>
                                             <th>Kategori Tenant</th>
                                             <th>Agenda Visit</th>
                                             <th>Perusahaan Tenant</th>
                                             <th>Minat Produk</th>
+                                            <th>Tanggal Pembuatan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Username</th>
+                                            <th>Penginput</th>
                                             <th>Kategori Tenant</th>
                                             <th>Agenda Visit</th>
                                             <th>Perusahaan Tenant</th>
                                             <th>Minat Produk</th>
+                                            <th>Tanggal Pembuatan</th>
                                             <th>Aksi</th>                   
                                         </tr>
                                     </tfoot>
@@ -76,6 +78,7 @@
 									            <td>{{$monitoring->agenda_visit}}</td>
 									            <td>{{$monitoring->perusahaan_tenant}}</td>
                                                 <td>{{$monitoring->detail_minat_produk}}</td>
+                                                <td>{{$monitoring->created_at}}</td>
                                                 <td><button class="btn btn-info" type="button" href="#" data-toggle="modal" data-target="#view_{{$monitoring->id}}" class="btn btn-default">Detail</button> |
                                                     <a href="/monitoring/delete/{{$monitoring->id}}" class="btn btn-xs btn-danger" onclick="return confirm('Apakah Anda yakin?');">Delete</a> 
                                                     <div class="modal fade" id="view_{{$monitoring->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -148,7 +151,8 @@
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <th>Dokumentasi</th>
-                                                                                        <td>{{$monitoring->foto_dokumentasi}}</td>
+                                                                                        <!-- <td>{{$monitoring->foto_dokumentasi}}</td> -->
+                                                                                        <td><img width="150px" src="{{ url('/marketing_project/public/images/Upload/'.$monitoring->foto_dokumentasi) }}"></td>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <th>Catatan Mengenai Peluang</th>
@@ -165,6 +169,10 @@
                                                                                     <tr>
                                                                                         <th>Catatan Permintaan Tenant</th>
                                                                                         <td>{{$monitoring->cttn_permintaan_tenant}}</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th>Tanggal Dibuatnya Laporan</th>
+                                                                                        <td>{{$monitoring->created_at}}</td>
                                                                                     </tr>
                                                                                 </tbody>
                                                                             </table>

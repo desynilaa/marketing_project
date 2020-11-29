@@ -31,8 +31,8 @@ Route::get('/monitoring/delete/{id}', [MonitoringController::class, 'destroy']);
 Route::get('/pengguna/input', [UserController::class, 'create'])->middleware('auth');
 Route::post('/pengguna/store', [UserController::class, 'store']);
 Route::get('/pengguna/index', [UserController::class, 'index'])->middleware('auth');
-Route::get('/pengguna/delete/{email}', [UserController::class, 'destroy']);
-Route::get('/pengguna/reset/{email}', [UserController::class, 'reset_password']);
+Route::get('/pengguna/delete/{NIK}', [UserController::class, 'destroy']);
+Route::get('/pengguna/reset/{NIK}', [UserController::class, 'reset_password']);
 
 Route::get('/ganti-password', [UserController::class, 'page_ganti_password'])->middleware('auth');
 Route::post('/save-new-password', [UserController::class, 'ganti_password'])->middleware('auth');

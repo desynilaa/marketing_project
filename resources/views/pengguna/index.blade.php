@@ -46,8 +46,8 @@
                                     <thead>
                                         <tr>
                                         	<th>No.</th>
-                                            <th>email</th>
-                                            <th>nama</th>
+                                            <th>NIK</th>
+                                            <th>Nama</th>
                                             <th>No Telepon</th>
                                             <th>Lokasi Kerja</th>
                                             <th>FM</th>
@@ -58,8 +58,8 @@
                                     <tfoot>
                                         <tr>
                                         	<th>No.</th>
-                                            <th>email</th>
-                                            <th>nama</th>
+                                            <th>NIK</th>
+                                            <th>Nama</th>
                                             <th>No Telepon</th>
                                             <th>Lokasi Kerja</th>
                                             <th>FM</th>
@@ -72,13 +72,13 @@
 									        @foreach($users as $user)
 									        <tr>
  									            <td class="text-center">{{$loop->iteration}}</td>
-									            <td>{{$user->email}}</td>
+									            <td>{{$user->NIK}}</td>
 									            <td>{{$user->nama}}</td>
 									            <td>{{$user->no_telf}}</td>
 									            <td>{{$user->loker}}</td>
 									            <td>{{$user->FM}}</td>
 									            <td>{{$user->role}}</td>
-                                                <td><a href="/pengguna/reset/{{$user->email}}" class="btn btn-warning" onclick="return confirm('Yakin ganti password?');">Reset Password</a> | <a href="/pengguna/delete/{{$user->email}}" class="btn btn-xs btn-danger" onclick="return confirm('Apakah Anda yakin?');">Delete</a> 
+                                                <td><a href="/pengguna/reset/{{$user->NIK}}" class="btn btn-warning" onclick="return confirm('Yakin ganti password?');">Reset Password</a> | <a href="/pengguna/delete/{{$user->NIK}}" class="btn btn-xs btn-danger" onclick="return confirm('Apakah Anda yakin?');">Delete</a> 
                                                 </td>
 									        </tr>
 									        @endforeach

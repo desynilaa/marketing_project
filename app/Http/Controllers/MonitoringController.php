@@ -20,12 +20,12 @@ class MonitoringController extends Controller
      */
     public function index()
     {
-        $email = Auth::user()->email;
-        $role =  DB::table('users')->where('email', $email)->value('role');
+        $NIK = Auth::user()->NIK;
+        $role =  DB::table('users')->where('NIK', $NIK)->value('role');
         if ($role == 'administrator') {
             $monitorings = DB::table('monitorings')->get();
         }elseif ($role == 'user') {
-            $monitorings = DB::table('monitorings')->where('username', $email)->get();
+            $monitorings = DB::table('monitorings')->where('username', $NIK)->get();
         }
         // $monitorings= DB::table('monitorings')->get();
         return view('monitoring.index', ['monitorings' => $monitorings]);
@@ -65,12 +65,23 @@ class MonitoringController extends Controller
             'minat_produk' => 'required',
             'detail_minat_produk' => 'required',
             'dokumentasi' => 'required',
-            'foto_dokumentasi' => 'required',
+            // 'foto_dokumentasi' => 'required',
+            'foto_dokumentasi' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
             'cttn_peluang' => 'required',
             'cttn_estimasi_revenue' => 'required',
             'cttn_timeline' => 'required',
             'cttn_permintaan_tenant' => 'required'
         ]);
+
+        // menyimpan data file yang diupload ke variabel $file
+        $file = $request->file('foto_dokumentasi');
+ 
+        $nama_file = time()."_".$file->getClientOriginalName();
+ 
+        // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'marketing_project\public\images\Upload';
+        $file->move($tujuan_upload,$nama_file);
+
 
         $data = new Monitoring();
         $data->username = $request->username;
@@ -88,7 +99,8 @@ class MonitoringController extends Controller
         $data->minat_produk = $request->minat_produk;
         $data->detail_minat_produk = $request->detail_minat_produk;
         $data->dokumentasi = $request->dokumentasi;
-        $data->foto_dokumentasi = $request->foto_dokumentasi;
+        // $data->foto_dokumentasi = $request->foto_dokumentasi;
+        $data->foto_dokumentasi = $nama_file;
         $data->cttn_peluang = $request->cttn_peluang;
 
         $data->cttn_estimasi_revenue = $request->cttn_estimasi_revenue;

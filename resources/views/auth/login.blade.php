@@ -35,8 +35,8 @@
                                     <form class="user" method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="form-group">
-                                            <input id="email" type="email" class="form-control form-control-user @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address..." autofocus>
+                                            <input id="NIK" type="text" class="form-control form-control-user @error('NIK') is-invalid @enderror" name="NIK" value="{{ old('NIK') }}" required autocomplete="NIK" aria-describedby="emailHelp"
+                                                placeholder="Masukkan NIK..." autofocus>
 
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
@@ -75,14 +75,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('frontend/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{ asset('frontend/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('frontend/js/sb-admin-2.min.js')}}"></script>
 
 </body>
 

@@ -50,24 +50,25 @@
 						    @csrf
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control " name="email" placeholder="Masukkan NIK (Nomor Induk Karyawan) calon pengguna" value="{{old('email')}}">
-                                        <span style="color: red">@error('email'){{ $message }} @enderror</span>
+                                        <input type="text" class="form-control " name="NIK" placeholder="Tuliskan NIK (Nomor Induk Karyawan) calon pengguna" value="{{old('NIK')}}">
+                                        <span style="color: red">@error('NIK'){{ $message }} @enderror</span>
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control "
-                                            name="nama" placeholder="Masukkan nama lengkap calon pengguna" value="{{old('nama')}}">
+                                            name="nama" placeholder="Tuliskan nama lengkap calon pengguna" value="{{old('nama')}}">
                                         <span style="color: red">@error('nama'){{ $message }} @enderror</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control "
-                                            name="loker" placeholder="Masukkan lokasi kerja calon pengguna" value="{{old('loker')}}">
+                                            name="loker" placeholder="Tuliskan lokasi kerja calon pengguna" value="{{old('loker')}}">
                                         <span style="color: red">@error('loker'){{ $message }} @enderror</span>
                                     </div>
                                     <div class="col-sm-6">
                                         <select name="FM" class="form-control">
-                                            <option value="BM TLT" selected>BM TLT</option>
+                                            <option value="BM TLT" disabled="">Pilih FM / BM</option>
+                                            <option value="BM TLT">BM TLT</option>
                                             <option value="FM Bali">FM Bali</option>
                                             <option value="FM Nusra Timur">FM Nusra Timur</option>
                                             <option value="FM Nusra Barat">FM Nusra Barat</option>
@@ -82,7 +83,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control "
-                                            name="no_telf" placeholder="Masukkan no telepon calon pengguna" value="{{old('no_telf')}}">
+                                            name="no_telf" placeholder="Tuliskan nomor telepon calon pengguna" value="{{old('no_telf')}}">
                                         <span style="color: red">@error('no_telf'){{ $message }} @enderror</span>
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -96,10 +97,6 @@
                                 <div class="" style="text-align: right">
                                     <button class="btn btn-primary btn-user" style="text-align: center" type="submit">Submit</button>
                                 </div>
-                                
-                                {{-- <div class="class=btn btn-primary btn-user" style="text-align: center" >
-        							<button class="btn btn-sm btn-primary" type="submit">Submit</button>
-    							</div> --}}
                             </form>
                         </div>
                     </div>

@@ -41,12 +41,12 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response NIK
      */
     public function store(Request $request)
     {
         $request->validate([
-            'email' => 'required|min:6|unique:users',
+            'NIK' => 'required|min:6|unique:users',
             'nama' => 'required',
             'no_telf' => 'required|regex:/(0)[0-9]/|not_regex:/[a-z]/|min:9',
             'loker' => 'required',
@@ -55,7 +55,7 @@ class UserController extends Controller
         ]);
 
         $data = new User();
-        $data->email = $request->email;
+        $data->NIK = $request->NIK;
         $data->password = bcrypt('000000');
         $data->nama = $request->nama;
         $data->no_telf = $request->no_telf;
@@ -64,7 +64,7 @@ class UserController extends Controller
         $data->role = $request->role;
         $data->save();
 
-        return redirect('pengguna/index')->with('success','Kamu berhasil Register');
+        return redirect('pengguna/index')->with('success','User added successfully');
     }
 
     /**
@@ -107,17 +107,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($email)
+    public function destroy($NIK)
     {
-        DB::table('users') -> where('email', $email) -> delete();
+        DB::table('users') -> where('NIK', $NIK) -> delete();
         // Alihkan ke halaman books
         return redirect('/pengguna/index') -> with('status', 'Data has been successfully deleted');
     }
 
-    public function reset_password($email)
+    public function reset_password($NIK)
     {
         DB::table('users')
-            ->where('email', $email)
+            ->where('NIK', $NIK)
             ->update(['password' => bcrypt('000000')]);
 
         return redirect('/pengguna/index') -> with('status', 'Password has been successfully reset');
@@ -135,9 +135,9 @@ class UserController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        $email = Auth::user()->email;
+        $NIK = Auth::user()->NIK;
         DB::table('users')
-        ->where('email', $email)
+        ->where('NIK', $NIK)
         ->update(['password' => bcrypt($request->password) ]);
 
         return redirect('/pengguna/index') -> with('status', 'Password has been successfully changed');
