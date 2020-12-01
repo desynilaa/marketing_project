@@ -4,48 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
+use Monitoring;
 
-class LoginController extends Controller
+class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-        if(!Session::get('login')){
-            return redirect('login')->with('alert', 'You must login first');
-        }else{
-            return view('monitoring/index');
-        }
-    }
-
-    public function login()
+    public function index()
     {
-        return view('login');
-    }
-
-    public function loginPost(Request $request)
-    {
-        $email = $request->email;
-        $password = $request->password;
-
-        $data= User::where('email', $email)->first();
-        if ($data){
-            if(Hash::check($password, $data->password)){
-                Session_put('nama', $data->nama);
-                Session_put('email', $data->email);
-                Session_put('login', TRUE);
-                return redirect('monitoring/index');
-            }else{
-                return redirect('login')->with('alert', 'Password atau Email salah !');
-            }
-        }else{
-            return redirect('login')->with('alert', 'Password atau Email salah !');
-
-        }
+        // $users= DB::table('monitorings')
+        // ->WHERE MONTH(created_at) = 12  and YEAR(created_at) = 2020
+        // ->value(count())
+        // return View::make('dashboard')->with(compact('counter-monitoring'));
+        // return view('viewblade', compact('view1','view2','view3','view4'));
+        return view('dashboard');
     }
 
     /**

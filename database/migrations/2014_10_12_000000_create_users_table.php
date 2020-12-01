@@ -29,11 +29,20 @@ class CreateUsersTable extends Migration
         });
         DB::table('users')->insert(
         array(
-            'email' => 'admin@gmail.com',
-            'password' => '$2y$10$Yk1qMIPwCCa9t9fSXt6FNeE/4HXMAu3z.M2j1Yuwox.lZzbR/wRWG', 
+            'NIK' => '11112020',
+            'password' => '$2y$10$NrLwltgInseFJoBW5fbNKe38prdQXsoqiUkpPsnWSjfzTxqLhDD.W', #telproarea5fun
             'nama' => 'admin',
-            'no_telf' => '081234567897', 
-            'loker' => 'true', 
+            'no_telf' => '081329429900', 
+            'loker' => 'Telpro Area V', 
+            'FM' => 'sbs', 
+            'role' => 'administrator'
+        ),
+        array(
+            'NIK' => 'admin',
+            'password' => '$2y$10$Yk1qMIPwCCa9t9fSXt6FNeE/4HXMAu3z.M2j1Yuwox.lZzbR/wRWG', #telproarea5fun
+            'nama' => 'admin',
+            'no_telf' => '081329429900', 
+            'loker' => 'Telpro Area V', 
             'FM' => 'sbs', 
             'role' => 'administrator'
         )

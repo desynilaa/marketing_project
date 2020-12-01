@@ -56,7 +56,7 @@ class UserController extends Controller
 
         $data = new User();
         $data->NIK = $request->NIK;
-        $data->password = bcrypt('000000');
+        $data->password = bcrypt('marketingfun');
         $data->nama = $request->nama;
         $data->no_telf = $request->no_telf;
         $data->loker = $request->loker;
@@ -140,6 +140,6 @@ class UserController extends Controller
         ->where('NIK', $NIK)
         ->update(['password' => bcrypt($request->password) ]);
 
-        return redirect('/pengguna/index') -> with('status', 'Password has been successfully changed');
+        return redirect('ganti-password') -> with('status', 'Password has been successfully changed');
     }
 }
