@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Monitoring;
+use App\Models\Monitoring;
+Use \Carbon\Carbon;
+use View;
 
 class DashboardController extends Controller
 {
@@ -19,12 +22,43 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // $users= DB::table('monitorings')
-        // ->WHERE MONTH(created_at) = 12  and YEAR(created_at) = 2020
-        // ->value(count())
-        // return View::make('dashboard')->with(compact('counter-monitoring'));
-        // return view('viewblade', compact('view1','view2','view3','view4'));
-        return view('dashboard');
+        #menghitung banyak user
+        $users = User::all()->count();
+
+        #menghitung banyak kunjungan per tahun
+        $reportyear = Monitoring::whereYear(
+            'created_at', '=', Carbon::now()->year
+        )->count();
+
+        #menghitung banyak kunjungan per bulan
+        $reportmonth = Monitoring::whereYear('created_at', '=', Carbon::now()->year)
+              ->whereMonth('created_at', '=', Carbon::now()->month)
+              ->count();
+
+        #menghitung banyak kunjungan per minggu
+        $reportweek = DB::table('monitorings') 
+        ->whereBetween('created_at', [Carbon::now()->subWeek()->format("Y-m-d H:i:s"), Carbon::now()])
+        ->count();
+
+
+        // $reportperweek=array();
+        for ($i = 1; $i <= 12; $i++) {
+           $perweek = DB::table('monitorings')
+            ->whereYear('created_at', '=', Carbon::now()->year)
+            ->whereMonth('created_at', '=', $i)
+            ->count();
+
+            $reportperweek[$i]=$perweek;
+        }
+        
+        // dd(json_encode($reportperweek,JSON_NUMERIC_CHECK));
+        // return view('dashboard', compact('users', 'reportyear', 'reportmonth', 'reportweek', 'reportperweek'));
+        return view::make('dashboard')
+        ->with(compact('users'))
+        ->with(compact('reportyear'))
+        ->with(compact('reportmonth'))
+        ->with(compact('reportweek'))
+        ->with(json_encode($reportperweek,JSON_NUMERIC_CHECK));
     }
 
     /**
