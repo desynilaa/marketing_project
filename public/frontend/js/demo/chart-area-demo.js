@@ -35,7 +35,7 @@ var reportperweek = ['0','0','0','0','0','0','0','0','0','0','2','3'];
 // var reportperweek = <?php echo json_encode($data, JSON_NUMERIC_CHECK); ?>;
 console.info(reportperweek);
 // var reportperweek = ['0','0','0','0','0','0','0','0','0','0','2','3']
-var myLineChart = new Chart(ctx, {
+var myAreaChart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: [],

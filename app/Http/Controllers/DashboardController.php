@@ -50,8 +50,6 @@ class DashboardController extends Controller
 
     public function chart()
     {
-        // $bulan=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        // dd($bulan);
         $reportperweek=array();
         for ($i = 1; $i <= 12; $i++) {
            $data = DB::table('monitorings')
@@ -65,7 +63,7 @@ class DashboardController extends Controller
         // $reportperweek = json_encode($reportperweek);
         // dd(gettype($reportperweek));
         $response['labels']=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        $response['data']=['0','0','0','0','0','0','0','0','0','0','2','3'];
+        $response['data']=$reportperweek;
         return response()->json($response);
     }
     /**
