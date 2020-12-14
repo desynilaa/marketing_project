@@ -29,13 +29,18 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
-var reportperweek = <?php echo $reportperweek; ?>;
+var json_url = "/chart-board";
+
+var reportperweek = ['0','0','0','0','0','0','0','0','0','0','2','3'];
+// var reportperweek = <?php echo json_encode($data, JSON_NUMERIC_CHECK); ?>;
+console.info(reportperweek);
+// var reportperweek = ['0','0','0','0','0','0','0','0','0','0','2','3']
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: [],
     datasets: [{
-      label: "Earnings",
+      label: "Month",
       lineTension: 0.3,
       backgroundColor: "rgba(78, 115, 223, 0.05)",
       borderColor: "rgba(78, 115, 223, 1)",
@@ -47,7 +52,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: reportperweek,
+      data: [],
     }],
   },
   options: {
@@ -117,3 +122,16 @@ var myLineChart = new Chart(ctx, {
     }
   }
 });
+
+ajax_chart(myAreaChart, json_url);
+
+    // function to update our chart
+    function ajax_chart(chart, url, data) {
+        var data = data || {};
+
+        $.getJSON(url, data).done(function(response) {
+            chart.data.labels = response.labels;
+            chart.data.datasets[0].data = response.data; // or you can iterate for multiple datasets
+            chart.update();
+        });
+    }

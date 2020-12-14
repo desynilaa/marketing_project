@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/dashboard', [DashboardController::class, 'index']);
+	Route::get('/chart-board', [DashboardController::class, 'chart']);
 	Route::get('/monitoring/input', [MonitoringController::class, 'create']);
 	Route::post('/monitoring/store', [MonitoringController::class, 'store']);
 	Route::get('/monitoring/index', [MonitoringController::class, 'index']);

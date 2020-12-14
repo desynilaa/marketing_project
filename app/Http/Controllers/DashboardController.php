@@ -40,27 +40,34 @@ class DashboardController extends Controller
         ->whereBetween('created_at', [Carbon::now()->subWeek()->format("Y-m-d H:i:s"), Carbon::now()])
         ->count();
 
-
-        // $reportperweek=array();
-        for ($i = 1; $i <= 12; $i++) {
-           $perweek = DB::table('monitorings')
-            ->whereYear('created_at', '=', Carbon::now()->year)
-            ->whereMonth('created_at', '=', $i)
-            ->count();
-
-            $reportperweek[$i]=$perweek;
-        }
-        
-        // dd(json_encode($reportperweek,JSON_NUMERIC_CHECK));
-        // return view('dashboard', compact('users', 'reportyear', 'reportmonth', 'reportweek', 'reportperweek'));
         return view::make('dashboard')
         ->with(compact('users'))
         ->with(compact('reportyear'))
         ->with(compact('reportmonth'))
-        ->with(compact('reportweek'))
-        ->with(json_encode($reportperweek,JSON_NUMERIC_CHECK));
+        ->with(compact('reportweek'));
+        // ->with(compact('reportperweek'));
     }
 
+    public function chart()
+    {
+        // $bulan=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        // dd($bulan);
+        $reportperweek=array();
+        for ($i = 1; $i <= 12; $i++) {
+           $data = DB::table('monitorings')
+            ->whereYear('created_at', '=', Carbon::now()->year)
+            ->whereMonth('created_at', '=', $i)
+            ->count();
+
+            // array_push($reportperweek, (string)$data);
+            array_push($reportperweek, $data);
+        }
+        // $reportperweek = json_encode($reportperweek);
+        // dd(gettype($reportperweek));
+        $response['labels']=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        $response['data']=['0','0','0','0','0','0','0','0','0','0','2','3'];
+        return response()->json($response);
+    }
     /**
      * Show the form for creating a new resource.
      *
